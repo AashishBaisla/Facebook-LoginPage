@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,500;0,700;1,300&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/157c180833.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 25rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            font-family: 'Poppins';
+            text-align: center;
+            background-color: rgb(238, 238, 238);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        img {
+            height: 12rem;
+            width: auto;
+            margin-bottom: -3rem;
+        }
+
+        .login {
+            height: 22rem ;
+            background-color: white;
+            box-shadow: 7px 7px 10px rgb(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 0.7rem;
+        }
+
+
+        .login #username {
+            height: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        
+        .login #password {
+            height: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: medium;
+            font-weight:400;
+            color: rgb(0, 0, 0, 0.7);
+            /* text-shadow: 1px 1px 2px rgb(0, 0, 0); */
+            margin-bottom: 1rem;
+        }
+
+        input {
+            width: 100%;
+            height: 3rem;
+            padding-left: 2.5rem;
+            padding-right: 1.5rem;
+            background-color: rgb(255, 255, 255);
+            border-radius: 0.5rem;
+            border: 0.1rem solid grey;
+            /* box-shadow: 2px 2px rgb(0, 0, 0, 0.5); */
+        }
+
+        input:hover {
+            background-color: rgb(212, 212, 212);
+        }
+
+        button {
+            margin-top: 0;
+            color: white;
+            display: inline-block;
+            background-color: #5890FF;
+            width: 100%;
+            height: 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            border: 0.1rem solid grey;
+        }
+
+        button:hover {
+            background-color: #2d6ceb;
+        }
+
+        a {
+            display: inline-block;
+            color: #2d6ceb;
+            font-weight: 400;
+            font-size: small;
+            margin-top: 1.5rem;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        i {
+            position: absolute;
+            align-items: center;
+            padding-top: 1rem;
+            padding-left: 0.5rem;
+        }
+        
+    </style>
+
+    <title>Document</title>
+
+</head>
+<body>
+    <section>
+
+            <img src="/Facebook/Images/facebook-logo.svg" alt="registration-icon">
+
+        <form class="login">
+
+            <h1> Log in to Facebook </h1>
+
+            <i class="fa fa-user"></i>
+            <input type="text" id="username" placeholder="Email address or phone number">
+
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" placeholder="Password">
+
+            <button onclick="saveFile()">Log in</button>
+
+            <a href="">Forgotten password?</a>
+
+        </form>
+
+    </section>
+</body>
+
+<script>
+
+    let saveFile = () => {
+        // Get data from each element
+        const fname = document.getElementById('username');
+        const lname = document.getElementById('password');
+ 
+
+        // Variable to store all data in text format
+        let data =
+        'Username: ' + username.value + '\n' +
+        'Password: ' + password.value + '\n' ;
+
+        //Convert text to blob
+        const texttoBLOB = new Blob([data], {type: 'text/plain'} ) ;
+        const FileName = 'formData.txt'
+
+        let newLink = document.createElement("a")
+        newLink.download = FileName ;
+
+        if(window.webkitURL !=null) {
+            newLink.href = window.webkitURL.createObjectURL(texttoBLOB) ;
+        }
+        else {
+            newLink.href = window.createObjectURL(texttoBLOB);
+            newLink.style.display = "none" ;
+            document.body.appendChild(newLink) ;
+        }
+
+        newLink.click() ;
+
+    }
+
+
+</script>
+</html>
